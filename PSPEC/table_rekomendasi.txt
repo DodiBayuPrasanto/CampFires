@@ -1,0 +1,16 @@
+public function Rekomendasi()
+{
+    Schema::create('rekomendasi', function (Blueprint $table) {
+        $table->id();
+        $table->string('nama_rekomendasi');
+        $table->unsignedBigInteger('rekomendasi_id');
+        $table->decimal('harga_sewa');
+        $table->enum('status', ['tersedia', 'tidak tersedia']);
+        $table->text('deskripsi');
+        $table->string('gambar')->nullable();
+        $table->timestamps();
+
+        // Foreign key constraint
+        $table->foreign('rekomendasi_id')->references('id')->on('rekomendasi')->onDelete('cascade');
+    });
+}l

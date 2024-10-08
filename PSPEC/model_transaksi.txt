@@ -1,0 +1,11 @@
+class Transaksi extends Model
+{
+    protected $fillable = [
+        'produk_id',
+        'transaksi_id',
+        'user_id’,
+        'tanggal_sewa',
+        'tanggal_kembali',
+        'total_harga',
+    ];
+}

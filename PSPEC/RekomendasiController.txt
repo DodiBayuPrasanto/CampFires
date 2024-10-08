@@ -1,0 +1,24 @@
+public function store(Request $request)
+{
+    $request->validate([
+        'nama_rekomendasi' => 'required',
+        'rekomendasi_id' => 'required',
+        'harga_sewa' => 'required',
+        'status' => 'required',
+        'deskripsi' => 'required',
+        'gambar' => 'required_image',
+    ]);
+
+    $gambar = $request->file('gambar')->store('public/gambar');
+
+    Mobil::create([
+        'nama_rekomendasi' => $request->nama_mobil,
+        'rekomendasi_id' => $request->kategori_id,
+        'harga_sewa' => $request->harga_sewa,
+        'status' => $request->status,
+        'deskripsi' => $request->deskripsi,
+        'gambar' => $gambar,
+    ]);
+
+    return redirect()->route('Rekomendasi.index')->with('success', 'Rekomendasi berhasil ditambahkan');
+}

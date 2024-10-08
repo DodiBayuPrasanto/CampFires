@@ -1,0 +1,21 @@
+public function store(Request $request)
+{
+    $request->validate([
+        'rekomendasi_id' => 'required',
+        'tanggal_sewa' => 'required|date',
+        'tanggal_kembali' => 'required|date',
+    ]);
+
+    $rekomendasi = Rekomendasi::find($request->rekomendasi_id);
+    $total_harga = $rekomendasi->harga_sewa * (strtotime($request->tanggal_kembali) - strtotime($request->tanggal_sewa)) / 86400;
+
+    Transaksi::create([
+        'user_id' => auth()->id(),
+        'rekomendasi_id' => $request->rekomendasi_id,
+        'tanggal_sewa' => $request->tanggal_sewa,
+        'tanggal_kembali' => $request->tanggal_kembali,
+        'total_harga' => $total_harga,
+    ]);
+
+    return redirect()->route('transaksi.index')->with('success', 'Transaksi berhasil dilakukan');
+}

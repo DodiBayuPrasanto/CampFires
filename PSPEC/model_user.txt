@@ -1,0 +1,9 @@
+class User extends Model
+{
+    protected $fillable = [
+        'nama',
+        'username',
+        'user_id’,
+        'password',
+    ];
+}

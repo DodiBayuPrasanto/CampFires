@@ -1,0 +1,16 @@
+public function Transaksi()
+{
+    Schema::create('transaksi', function (Blueprint $table) {
+        $table->id();
+        $table->unsignedBigInteger('user_id');
+        $table->unsignedBigInteger('produk_id');
+        $table->date('tanggal_sewa');
+        $table->date('tanggal_kembali');
+        $table->decimal('total_harga', 10, 2);
+        $table->timestamps();
+
+        // Foreign key constraints
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+        $table->foreign('produk_id')->references('id')->on('produk')->onDelete('cascade');
+    });
+}

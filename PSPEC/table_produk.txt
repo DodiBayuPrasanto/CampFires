@@ -1,0 +1,12 @@
+public function produk()
+{
+    Schema::create('produk', function (Blueprint $table) {
+        $table->id();
+        $table->string('nama_product');
+        $table->varchar(‘slug’);
+        $table->varchar(‘thumbnail’);
+        $table->int(‘kategori’);
+        $table->int(‘brand’);
+        $table->timestamps();
+    });
+}

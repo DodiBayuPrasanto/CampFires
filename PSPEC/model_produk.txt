@@ -1,0 +1,11 @@
+class Produk extends Model
+{
+    protected $fillable = [
+        'nama_produk',
+        'produk_id',
+        '’thumbnail,
+        'kategori',
+        'brand',
+        'slug',
+    ];
+}

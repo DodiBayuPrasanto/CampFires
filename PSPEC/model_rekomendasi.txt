@@ -1,0 +1,11 @@
+class Rekomendasi extends Model
+{
+    protected $fillable = [
+        'nama_rekomendasi',
+        'rekomendasi_id',
+        'harga_sewa',
+        'status',
+        'deskripsi',
+        'gambar',
+    ];
+}
